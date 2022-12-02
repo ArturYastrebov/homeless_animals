@@ -25,7 +25,8 @@ SECRET_KEY = "django-insecure-%y4989ij9deyyw(qj5_czu26-s=sbn)(56!*7dr6=%=a_go(ac
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1",
+                 "0.0.0.0"]
 
 
 # Application definition
@@ -75,8 +76,12 @@ WSGI_APPLICATION = "homeless_animals.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "homeless_animal_project_db",
+        "USER": "admin_db",
+        "PASSWORD": "pass123",
+        "HOST": "localhost",
+        "PORT": "",
     }
 }
 
