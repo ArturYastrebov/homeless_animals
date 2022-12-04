@@ -16,10 +16,14 @@ class Animal(models.Model):
         ("Female", "Female")
     ]
     AGE_CHOICES = [
-        ("PUPPY", "Puppy"),
-        ("KITTEN", "Kitten"),
-        ("ADULT_DOG", "Adult dog"),
-        ("ADULT_CAT", "Adult cat"),
+        ("JN", "Junior"),
+        ("MD", "Middle"),
+        ("SN", "Senior"),
+    ]
+
+    LOST_CHOICES = [
+        ("YES", "Yes"),
+        ("No", "No")
     ]
 
 
@@ -29,8 +33,8 @@ class Animal(models.Model):
     species = models.CharField(max_length=3, choices=SPECIES_CHOICES)
     size = models.CharField(max_length=1, choices=SIZE_CHOICES)
     sex = models.CharField(max_length=6, choices=SEX_CHOICES)
-    age = models.CharField(max_length=9, choices=AGE_CHOICES)
-    lost = models.BooleanField(False)
+    age = models.CharField(max_length=2, choices=AGE_CHOICES)
+    lost = models.CharField(max_length=3, choices=LOST_CHOICES)
 
 
 class User(models.Model):
@@ -42,9 +46,9 @@ class User(models.Model):
     nick_name = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
     name = models.CharField(max_length=50)
-    phone_number = models.IntegerField(max_length=16)
+    phone_number = models.IntegerField()
     password = models.CharField(max_length=20)
-    permission = models.BooleanField(False)
+    permission = models.BooleanField(default=False)
 
 class Advert(models.Model):
     STATUS_CHOICES = [
@@ -59,8 +63,8 @@ class Advert(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(blank=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES)
-    animal = models.ForeignKey(Animal, on_delete=models.RESTRICT)
-    sity = models.CharField(max_length=50)
+    animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
+    city = models.CharField(max_length=50)
     coordinates = models.CharField(max_length=50)
     description = models.TextField
     inspector = models.ForeignKey(User, on_delete=models.RESTRICT)
