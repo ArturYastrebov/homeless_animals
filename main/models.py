@@ -1,3 +1,4 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 from datetime import datetime
 
@@ -27,9 +28,6 @@ class Animal(models.Model):
     ]
 
 
-    class Meta:
-        db_table = "animal"
-
     species = models.CharField(max_length=3, choices=SPECIES_CHOICES)
     size = models.CharField(max_length=1, choices=SIZE_CHOICES)
     sex = models.CharField(max_length=6, choices=SEX_CHOICES)
@@ -37,18 +35,9 @@ class Animal(models.Model):
     lost = models.CharField(max_length=3, choices=LOST_CHOICES)
 
 
-class User(models.Model):
+class CustomUser(AbstractUser):
 
-
-    class Meta:
-        db_table = "user"
-
-    nick_name = models.CharField(max_length=50)
-    email = models.CharField(max_length=50)
-    name = models.CharField(max_length=50)
-    phone_number = models.IntegerField()
-    password = models.CharField(max_length=20)
-    permission = models.BooleanField(default=False)
+    phone_number = models.IntegerField(null=True)
 
 class Advert(models.Model):
     STATUS_CHOICES = [
@@ -57,9 +46,6 @@ class Advert(models.Model):
     ]
 
 
-    class Meta:
-        db_table = "advert"
-
     created = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(blank=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES)
@@ -67,4 +53,4 @@ class Advert(models.Model):
     city = models.CharField(max_length=50)
     coordinates = models.CharField(max_length=50)
     description = models.TextField
-    inspector = models.ForeignKey(User, on_delete=models.RESTRICT)
+    inspector = models.ForeignKey(CustomUser, on_delete=models.RESTRICT)
