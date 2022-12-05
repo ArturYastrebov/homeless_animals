@@ -52,5 +52,5 @@ class Advert(models.Model):
     animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
     city = models.CharField(max_length=50)
     coordinates = models.CharField(max_length=50)
-    description = models.TextField
+    description = models.TextField()
     inspector = models.ForeignKey(CustomUser, on_delete=models.RESTRICT)
