@@ -25,8 +25,7 @@ SECRET_KEY = "django-insecure-%y4989ij9deyyw(qj5_czu26-s=sbn)(56!*7dr6=%=a_go(ac
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1",
-                 "0.0.0.0"]
+ALLOWED_HOSTS = ["127.0.0.1", "0.0.0.0"]
 
 
 # Application definition
@@ -38,8 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
-    "main.apps.MainConfig"
+    "main.apps.MainConfig",
 ]
 
 MIDDLEWARE = [
@@ -50,7 +48,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-
     "django.middleware.locale.LocaleMiddleware",
 ]
 
@@ -119,6 +116,9 @@ TIME_ZONE = "Europe/Kyiv"
 USE_I18N = True
 
 USE_TZ = True
+
+# User
+AUTH_USER_MODEL = "main.CustomUser"
 
 
 # Static files (CSS, JavaScript, Images)
