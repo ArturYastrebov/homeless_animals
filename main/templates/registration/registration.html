@@ -1,0 +1,21 @@
+{% extends "homeless_animals/base.html" %}
+
+{% block title %}
+    <title>
+            Registration
+    </title>
+{% endblock %}
+
+{% block content %}
+
+    <h1>
+        Registration
+    </h1>
+
+    <hr>
+    <form action="{% url 'registration' %}" method="post">
+            {{ form }}
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success">submit</button>
+    </form>
+{% endblock %}
