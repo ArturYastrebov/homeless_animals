@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from datetime import datetime
 
+
 class Animal(models.Model):
     SPECIES_CHOICES = [
         ("DOG", "Dog"),
@@ -13,22 +14,14 @@ class Animal(models.Model):
         ("M", "Middle"),
         ("S", "Small"),
     ]
-    SEX_CHOICES = [
-        ("Male", "Male"),
-        ("Female", "Female")
-    ]
+    SEX_CHOICES = [("Male", "Male"), ("Female", "Female")]
     AGE_CHOICES = [
         ("JN", "Junior"),
         ("MD", "Middle"),
         ("SN", "Senior"),
     ]
 
-    LOST_CHOICES = [
-        ("YES", "Yes"),
-        ("No", "No")
-    ]
-
-
+    LOST_CHOICES = [("YES", "Yes"), ("No", "No")]
     species = models.CharField(max_length=3, choices=SPECIES_CHOICES)
     size = models.CharField(max_length=1, choices=SIZE_CHOICES)
     sex = models.CharField(max_length=6, choices=SEX_CHOICES)
@@ -43,16 +36,15 @@ class CustomUser(AbstractUser):
 
     phone_number = models.IntegerField(null=True)
 
-class Advert(models.Model):
-    STATUS_CHOICES = [
-        ("IN_PROCESS", "In process"),
-        ("DONE", "Done")
-    ]
 
+class Advert(models.Model):
+    STATUS_CHOICES = [("IN_PROCESS", "In process"), ("DONE", "Done")]
 
     created = models.DateField(auto_now_add=True)
     last_updated = models.DateField(blank=True, default=timezone.now)
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="IN_PROCESS")
+    status = models.CharField(
+        max_length=10, choices=STATUS_CHOICES, default="IN_PROCESS"
+    )
     animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
     city = models.CharField(max_length=50)
     coordinates = models.CharField(max_length=50)
