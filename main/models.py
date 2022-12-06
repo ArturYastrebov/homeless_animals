@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from datetime import datetime
@@ -34,6 +35,9 @@ class Animal(models.Model):
     age = models.CharField(max_length=2, choices=AGE_CHOICES)
     lost = models.CharField(max_length=3, choices=LOST_CHOICES)
 
+    def __str__(self):
+        return f"species: {self.species}, size: {self.size}, sex: {self.sex}, age: {self.age}, lost: {self.lost}"
+
 
 class CustomUser(AbstractUser):
 
@@ -46,11 +50,14 @@ class Advert(models.Model):
     ]
 
 
-    created = models.DateTimeField(auto_now_add=True)
-    last_updated = models.DateTimeField(blank=True)
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES)
+    created = models.DateField(auto_now_add=True)
+    last_updated = models.DateField(blank=True, default=timezone.now)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="IN_PROCESS")
     animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
     city = models.CharField(max_length=50)
     coordinates = models.CharField(max_length=50)
-    description = models.TextField()
+    description = models.TextField(default="")
     inspector = models.ForeignKey(CustomUser, on_delete=models.RESTRICT)
+
+    def __str__(self):
+        return f"city: {self.city}, coordinates: {self.coordinates}, description: {self.description}"
