@@ -1,7 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
-from main.forms import AnimalForm, AddAnimalForm
+from main.forms import AddAnimalForm
 from main.models import Animal, Advert, CustomUser
 
 
@@ -12,14 +11,19 @@ def start(response):
     return render(response, "homeless_animals/start.html")
 
 
-def show_animals_page(response):
-    animals = Animal.objects.all()
-    adverts = Advert.objects.all()
+def open_animals_page(response):
+    animals = sorted(Animal.objects.all(), key=lambda instance: instance.id)
+    adverts = sorted(Advert.objects.all(), key=lambda instance: instance.animal_id)
+    results = [str(result[0]) + str(result[1]) for result in list(zip(animals, adverts))]
     return render(
         response,
         "homeless_animals/show_animals.html",
-        {"animals": animals, "adverts": adverts},
+        {"content": results},
     )
+
+
+def show_proper_animals():
+    pass
 
 
 def about_us_page(response):
@@ -38,11 +42,12 @@ def add_animals_upload(request):
     animal = Animal.objects.create(
         species=values[0], size=values[1], sex=values[2], age=values[3], lost=values[4]
     )
-    advert = Advert.objects.create(
+    Advert.objects.create(
         animal=animal,
-        city=values[5],
-        coordinates=values[6],
-        description=values[7],
+        photo=values[5],
+        city=values[6],
+        coordinates=values[7],
+        description=values[8],
         inspector=admin,
     )
     return render(request, "homeless_animals/upload.html")

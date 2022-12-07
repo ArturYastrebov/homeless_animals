@@ -29,7 +29,7 @@ class Animal(models.Model):
     lost = models.CharField(max_length=3, choices=LOST_CHOICES)
 
     def __str__(self):
-        return f"species: {self.species}, size: {self.size}, sex: {self.sex}, age: {self.age}, lost: {self.lost}"
+        return f"species: {self.species}\nsize: {self.size}\nsex: {self.sex}\nage: {self.age}\nlost: {self.lost}"
 
 
 class CustomUser(AbstractUser):
@@ -46,10 +46,11 @@ class Advert(models.Model):
         max_length=10, choices=STATUS_CHOICES, default="IN_PROCESS"
     )
     animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
+    photo = models.FileField(default="")
     city = models.CharField(max_length=50)
     coordinates = models.CharField(max_length=50)
     description = models.TextField(default="")
     inspector = models.ForeignKey(CustomUser, on_delete=models.RESTRICT)
 
     def __str__(self):
-        return f"city: {self.city}, coordinates: {self.coordinates}, description: {self.description}"
+        return f" last_update: {self.last_updated}\ncity: {self.city}\ncoordinates\n{self.coordinates}\ndescription: {self.description}"

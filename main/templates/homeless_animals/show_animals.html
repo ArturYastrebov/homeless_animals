@@ -1,5 +1,25 @@
 {% extends "homeless_animals/base.html" %}
 
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="../../static/css/show_animals.css">
+{% endblock %}
+
 {% block title %}
     <title>Show animals</title>
 {% endblock %}
+
+{% block content %}
+    <div class="row">
+            {% for result in content %}
+                <div class="col-2">
+                    <div class="card">
+                        <div class="card-body">
+                            {{ result }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+

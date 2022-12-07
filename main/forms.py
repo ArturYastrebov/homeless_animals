@@ -12,7 +12,7 @@ class AnimalForm(ModelForm):
 class AdvertForm(ModelForm):
     class Meta:
         model = Advert
-        fields = ["city", "coordinates", "description"]
+        fields = ["photo", "city", "coordinates", "description"]
 
 
 class AddAnimalForm(MultiModelForm):
