@@ -47,7 +47,7 @@ class Advert(models.Model):
 
 
     created = models.DateTimeField(auto_now_add=True)
-    last_updated = models.DateTimeField(blank=True)
+    last_updated = models.DateTimeField(blank=True, auto_now=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES)
     animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
     city = models.CharField(max_length=50)
