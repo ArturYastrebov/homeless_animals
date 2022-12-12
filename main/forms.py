@@ -2,7 +2,6 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm, EmailField, CharField, IntegerField
 from main.models import *
-# from betterforms.multiform import MultiModelForm
 
 
 class AnimalForm(ModelForm):
@@ -17,11 +16,6 @@ class AdvertForm(ModelForm):
         fields = ["city", "coordinates", "description"]
 
 
-# class AddAnimalForm(MultiModelForm):
-#     form_classes = {
-#         "animal": AnimalForm,
-#         "advert": AdvertForm
-#     }
 User = get_user_model()
 class UserCreationForm(UserCreationForm):
     email = EmailField(label="Email")
