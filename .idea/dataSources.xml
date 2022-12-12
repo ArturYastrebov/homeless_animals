@@ -10,5 +10,12 @@
       <jdbc-url>jdbc:postgresql://127.0.0.1:5432/homeless_animal_project_db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="homeless_animal_project_db@localhost" uuid="4068cdea-a814-40ff-9282-89523c32328e">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/homeless_animal_project_db</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
