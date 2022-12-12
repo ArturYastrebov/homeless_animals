@@ -1,0 +1,51 @@
+{% extends "homeless_animals/base.html" %}
+
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="../../static/css/show_animals.css">
+{% endblock %}
+
+{% block content %}
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+
+    <div class="row">
+        {% for contact in page_obj %}
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                        <img src= "../../static/images/{{ contact.advert.photo }}" alt="Image does not found" width=100%>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">index: {{ contact.advert.id }}</li>
+                            <li class="list-group-item">last update: {{ contact.advert.last_updated }}</li>
+                            <li class="list-group-item">city: {{ contact.advert.city }}</li>
+                            <li class="list-group-item">species: {{ contact.animal.species }}</li>
+                            <li class="list-group-item">size: {{ contact.animal.size }}</li>
+                            <li class="list-group-item">sex: {{ contact.animal.sex }}</li>
+                            <li class="list-group-item">age: {{ contact.animal.age }}</li>
+                            <li class="list-group-item">lost: {{ contact.animal.lost }}</li>
+                            <li class="list-group-item">coordinates: {{ contact.advert.coordinates }}</li>
+                            <li class="list-group-item">description: {{ contact.advert.description }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {{ contact.full_name|upper }}<br>
+{% endblock %}
