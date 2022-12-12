@@ -89,7 +89,3 @@ def add_animals_upload(request):
     # img = Image.open(path)
     # img = img.save(f"{values[8]}")
     return render(request, "homeless_animals/upload.html")
-
-
-def help_page(request):
-    return render(request, "homeless_animals/help.html")
