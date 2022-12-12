@@ -9,17 +9,10 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row">
-            {% for result in content %}
-                <div class="col-2">
-                    <div class="card">
-                        <div class="card-body">
-                            {{ result }}
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
+    <form action="uploaf" method="POST" class="content_show_form">
+        <lable>Choose what animals do you want to see</lable>
+        {% csrf_token %}
+        {% form.as_p %}
+        <button type="submit" class="save btn btn-secondary">Search for animals</button>
+    </form>
 {% endblock %}
-
