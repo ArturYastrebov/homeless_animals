@@ -54,13 +54,5 @@ a:hover {
 }
 
 .content {
-    margin: 100px 50px;
-}
-
-.content .content-add-form {
-    width: 550px;
-    height: 700px;
-    background-color: antiquewhite;
-    padding: 50px;
-    border-radius: 10px;
+    margin-top: 100px;
 }
