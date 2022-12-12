@@ -39,6 +39,7 @@ class CustomUser(AbstractUser):
 
 class Advert(models.Model):
     STATUS_CHOICES = [("IN_PROCESS", "In process"), ("DONE", "Done")]
+    CITY_CHOICES = [("KV", "Kyiv"), ]
 
     created = models.DateField(auto_now_add=True)
     last_updated = models.DateField(blank=True, default=timezone.now)
@@ -46,11 +47,11 @@ class Advert(models.Model):
         max_length=10, choices=STATUS_CHOICES, default="IN_PROCESS"
     )
     animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
-    photo = models.FileField(default="")
-    city = models.CharField(max_length=50)
+    city = models.CharField(max_length=50, choices=CITY_CHOICES)
     coordinates = models.CharField(max_length=50)
-    description = models.TextField(default="")
-    inspector = models.ForeignKey(CustomUser, on_delete=models.RESTRICT)
+    description = models.TextField(null=True)
+    inspector = models.ForeignKey(CustomUser, on_delete=models.RESTRICT, null=True)
+    photo = models.FileField(null=True)
 
     def __str__(self):
         return f" last_update: {self.last_updated}\ncity: {self.city}\ncoordinates\n{self.coordinates}\ndescription: {self.description}"
