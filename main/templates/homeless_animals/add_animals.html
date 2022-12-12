@@ -4,6 +4,10 @@
     <title>Add animals</title>
 {% endblock %}
 
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="../../static/css/add_animals.css">
+{% endblock %}
+
 {% block content %}
     <form action="upload/" method="POST" class="content-add-form">
         {% csrf_token %}
