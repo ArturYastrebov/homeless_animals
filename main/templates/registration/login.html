@@ -1,0 +1,56 @@
+{% extends "homeless_animals/base.html" %}
+
+{% block title %}
+    <title>Login</title>
+{% endblock %}
+
+<body>
+
+    {% block content %}
+         <div class="grid text-left" style="margin-left: 15%; margin-right: 25%">
+            <h1>
+                Login
+            </h1>
+            <hr>
+            {% if form.errors %}
+                <p>
+                    {{ form.errors.error }}
+                </p>
+            {% endif %}
+            <form action="{% url 'login' %}" method="post">
+                <table>
+                    <tr>
+                        <td>
+                            <div class="grid text-left" style="margin-top: 5px; margin-left: 15%; margin-right: 25%">
+                          {{ form.username.label_tag }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="grid text-left" style="margin-top: 5px; margin-left: 15%; margin-right: 25%">
+                          {{ form.username }}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="grid text-left" style="margin-top: 5px; margin-left: 15%; margin-right: 25%">
+                          {{ form.password.label_tag }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="grid text-left" style="margin-top: 5px; margin-left: 15%; margin-right: 25%">
+                          {{ form.password }}
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success" style="margin-left: 5px;margin-top: 10px;margin-bottom: 10px">submit</button>
+            </form>
+            <form method="get" action="http://127.0.0.1:8000/registration/">
+                <input type="submit" value="Go to registration!">
+            </form>
+         </div>
+    {% endblock %}
+
+</body>
