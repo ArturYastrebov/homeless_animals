@@ -29,19 +29,44 @@
             <div class="col-3">
                 <div class="card">
                     <div class="card-body">
-                        <img src= "../../static/images/{{ contact.advert.photo }}" alt="Image does not found" width=100%>
+                        <img src= "../../static/{{ contact.photo }}" alt="Image does not found" width=100%>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">index: {{ contact.advert.id }}</li>
-                            <li class="list-group-item">last update: {{ contact.advert.last_updated }}</li>
-                            <li class="list-group-item">city: {{ contact.advert.city }}</li>
-                            <li class="list-group-item">species: {{ contact.animal.species }}</li>
-                            <li class="list-group-item">size: {{ contact.animal.size }}</li>
-                            <li class="list-group-item">sex: {{ contact.animal.sex }}</li>
-                            <li class="list-group-item">age: {{ contact.animal.age }}</li>
-                            <li class="list-group-item">lost: {{ contact.animal.lost }}</li>
-                            <li class="list-group-item">coordinates: {{ contact.advert.coordinates }}</li>
-                            <li class="list-group-item">description: {{ contact.advert.description }}</li>
+                            <li class="list-group-item">index: {{ contact.id }}</li>
+                            <li class="list-group-item">last update: {{ contact.last_updated }}</li>
+                            <li class="list-group-item">city: {{ contact.city }}</li>
+                            <li class="list-group-item">species: {{ contact.species }}</li>
                         </ul>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Show full information
+                        </button>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Advert</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul>
+                                            <li class="list-group-item">index: {{ contact.id }}</li>
+                                            <li class="list-group-item">last update: {{ contact.last_updated }}</li>
+                                            <li class="list-group-item">city: {{ contact.city }}</li>
+                                            <li class="list-group-item">species: {{ contact.species }}</li>
+                                            <li class="list-group-item">size: {{ contact.size }}</li>
+                                            <li class="list-group-item">sex: {{ contact.sex }}</li>
+                                            <li class="list-group-item">age: {{ contact.age }}</li>
+                                            <li class="list-group-item">lost: {{ contact.lost }}</li>
+                                            <li class="list-group-item">coordinates: {{ contact.coordinates }}</li>
+                                            <li class="list-group-item">description: {{ contact.description }}</li>
+                                        </ul>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
