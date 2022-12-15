@@ -16,6 +16,12 @@ class AdvertForm(ModelForm):
         fields = ["city", "coordinates", "description"]
 
 
+class AnimalPointForm(ModelForm):
+    class Meta:
+        model = AnimalPoint
+        fields = ('animal', 'description')
+
+
 User = get_user_model()
 class UserCreationForm(UserCreationForm):
     email = EmailField(label="Email")

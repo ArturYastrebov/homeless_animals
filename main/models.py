@@ -54,3 +54,12 @@ class Advert(models.Model):
     coordinates = models.CharField(max_length=50)
     description = models.TextField(default="")
     inspector = models.ForeignKey(CustomUser, on_delete=models.RESTRICT)
+
+
+class AnimalPoint(models.Model):
+
+    animal = models.CharField(max_length=100)
+    coordinates = models.JSONField(max_length=100, null=False)
+    description = models.TextField(default="")
+
+

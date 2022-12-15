@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "main.apps.MainConfig",
+    "google_maps"
 ]
 
 MIDDLEWARE = [
@@ -107,6 +108,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+
+GOOGLE_API_KEY = 'AIzaSyBFILT2NLze2t6r-6GJLSvDC1wR7iE8beM'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/

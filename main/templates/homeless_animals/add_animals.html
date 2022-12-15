@@ -3,3 +3,85 @@
 {% block title %}
     <title>Add animals</title>
 {% endblock %}
+
+{% block header %}
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <!-- playground-hide -->
+    <script>
+      const process = { env: {} };
+      process.env.GOOGLE_MAPS_API_KEY =
+        "AIzaSyBFILT2NLze2t6r-6GJLSvDC1wR7iE8beM";
+    </script>
+    <!-- playground-hide-end -->
+
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'add_animals_points' %}" method="POST" class="content-add-form">
+        {% csrf_token %}
+        <p>
+            animal
+        {{ form.animal }}
+        </p>
+        <p>
+            coordinates
+            <input type="text" required id="point" name="res_point" style="width: 450px" placeholder="Сlick on the map to select the coordinates">
+        </p>
+        <p>
+        description
+        {{ form.description }}
+        </p>
+
+        <button type="submit" class="btn btn-success">Save</button>
+
+            <div class="grid text-left" style="margin-left: 15%; margin-right: 25%">
+            <h1>
+                Show homeless animals on Google maps
+            </h1>
+            <hr>
+
+            <div id="map" style="height: 600px; width: 800px;"></div>
+                     <script>
+                // Initialize and add the map
+                function initMap() {
+                  // The location of Uluru
+                  const uluru = { lat: 50.457084670428856, lng: 30.519846638514196 };
+
+                  // The map, centered at Uluru
+                  const map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 13,
+                    center: uluru,
+                  });
+
+                    let infoWindow = new google.maps.InfoWindow({
+                        content: "Click on the map where you saw the animal",
+                        position: uluru,
+                      });
+                    infoWindow.open(map);
+                      // Configure the click listener.
+                      map.addListener("click", (mapsMouseEvent) => {
+                        // Close the current InfoWindow.
+                        infoWindow.close();
+
+                        // Create a new InfoWindow.
+                        infoWindow = new google.maps.InfoWindow({
+                          position: mapsMouseEvent.latLng,
+                        });
+                        infoWindow.setContent(
+                          "The animal is here "
+                        );
+                        document.getElementById('point').value =  JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+
+                        infoWindow.open(map);
+                      });
+                }
+                window.initMap = initMap;
+            </script>
+
+            <script async
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFILT2NLze2t6r-6GJLSvDC1wR7iE8beM&callback=initMap">
+            </script>
+        </div>
+    </form>
+
+{% endblock %}
