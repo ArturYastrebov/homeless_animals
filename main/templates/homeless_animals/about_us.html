@@ -3,3 +3,13 @@
 {% block title %}
     <title>About Us</title>
 {% endblock %}
+
+
+
+{% block content %}
+     {% if user.phone_number == 11111 %}
+            test for user.phone_number = 11111
+     {% else %}
+            another text
+    {% endif %}
+{% endblock %}
