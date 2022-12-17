@@ -1,0 +1,18 @@
+.row{
+    overflow: hidden;
+}
+
+[class*="col-"]{
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
+
+.content .content-show-form {
+    width: 550px;
+    height: auto;
+    margin: auto;
+    background-color: antiquewhite;
+    padding: 50px;
+    border-radius: 10px;
+}
+

@@ -3,3 +3,34 @@
 {% block title %}
     <title>Add animals</title>
 {% endblock %}
+
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="../../static/css/add_animals.css">
+{% endblock %}
+
+{% block content %}
+    <form action="upload/" method="POST" enctype="multipart/form-data" class="content-add-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Save
+        </button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Data confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            {{ content }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Don't save</button>
+                <button type="submit" class="save btn btn-secondary">Save</button>
+            </div>
+        </div>
+        </div>
+        </div>
+    </form>
+{% endblock %}

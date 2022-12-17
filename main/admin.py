@@ -1,17 +1,15 @@
 from django.contrib import admin
-from .models import CustomUser, Animal, Advert
+from .models import CustomUser, AnimalAdvert
 
 
 class CustomUserAdmin(admin.ModelAdmin):
     list_display = ("username", "email", "first_name", "last_name", "phone_number", "password", "is_staff")
 
-class AnimalAdmin(admin.ModelAdmin):
-    list_display = ("species", "size", "sex", "age", "lost")
 
-class AdvertAdmin(admin.ModelAdmin):
-    list_display = ("created", "last_updated", "status", "animal_id", "city", "coordinates", "description", "inspector_id")
+class AnimalAdvertAdmin(admin.ModelAdmin):
+    list_display = ("created", "last_updated", "status", "city", "coordinates", "description", "inspector_id", "species", "size", "sex", "age", "lost")
+
 
 admin.site.register(CustomUser, CustomUserAdmin)
-admin.site.register(Animal, AnimalAdmin)
-admin.site.register(Advert, AdvertAdmin)
+admin.site.register(AnimalAdvert, AnimalAdvertAdmin)
 
