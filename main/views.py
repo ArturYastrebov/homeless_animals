@@ -1,3 +1,5 @@
+import json
+
 from PIL import Image
 import itertools
 
