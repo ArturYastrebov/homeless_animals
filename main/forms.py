@@ -36,7 +36,7 @@ class FindAnimalAdvertForm(forms.Form):
     lost = forms.ChoiceField(choices=LOST_CHOICES)
     city = forms.ChoiceField(choices=CITY_CHOICES)
 
-
+#
 class AddAnimalAdvertForm(forms.ModelForm):
     class Meta:
         model = AnimalAdvert
@@ -51,14 +51,6 @@ class AddAnimalAdvertForm(forms.ModelForm):
             "age",
             "lost",
         ]
-        model = Animal
-        fields = ["species", "size", "sex", "age", "lost"]
-
-
-class AdvertForm(ModelForm):
-    class Meta:
-        model = Advert
-        fields = ["city", "coordinates", "description"]
 
 
 User = get_user_model()

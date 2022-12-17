@@ -8,9 +8,9 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views import View
 
-from main.forms import AnimalForm, UserCreationForm
+from main.forms import UserCreationForm, AddAnimalAdvertForm
 
-from main.forms import AddAnimalAdvertForm, FindAnimalAdvertForm
+from main.forms import FindAnimalAdvertForm
 from main.models import AnimalAdvert
 
 
@@ -40,16 +40,18 @@ def show_animals_upload(request):
         request, "homeless_animals/show_animals_upload.html", {"page_obj": page_obj}
     )
 
-
+#
 def add_animals_page(request):
     form = AddAnimalAdvertForm()
     return render(request, "homeless_animals/add_animals.html", {"form": form})
-
-
+#
+#
 def add_animals_upload(request):
     if request.method == "POST":
+        print('**********POST*************')
         form = AddAnimalAdvertForm(request.POST, request.FILES)
         if form.is_valid():
+            print('************save************')
             form.save()
     return render(request, "homeless_animals/upload.html")
 
