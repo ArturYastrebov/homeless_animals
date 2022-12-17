@@ -50,10 +50,8 @@ def add_animals_page(request):
 #
 def add_animals_upload(request):
     if request.method == "POST":
-        print('**********POST*************')
         form = AddAnimalAdvertForm(request.POST, request.FILES)
         if form.is_valid():
-            print('************save************')
             form.save()
     return render(request, "homeless_animals/upload.html")
 
