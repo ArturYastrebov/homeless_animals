@@ -29,7 +29,7 @@ def about_us_page(response):
 
 def show_animals_page(request):
     form = FindAnimalAdvertForm()
-    return render(request, "homeless_animals/add_animals.html", {"form": form})
+    return render(request, "homeless_animals/show_animals.html", {"form": form})
 
 
 def show_animals_upload(request):
