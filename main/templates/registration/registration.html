@@ -1,0 +1,22 @@
+{% extends "homeless_animals/base.html" %}
+
+{% block title %}
+    <title>
+            Registration
+    </title>
+{% endblock %}
+
+{% block content %}
+
+<div class="grid text-left" style="margin-left: 15%; margin-right: 45%">
+    <h1>
+        Registration
+    </h1>
+    <hr>
+    <form action="{% url 'registration' %}" method="post">
+            {{ form.as_p }}
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success">submit</button>
+    </form>
+</div>
+{% endblock %}
