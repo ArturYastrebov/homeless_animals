@@ -5,8 +5,12 @@ from datetime import datetime
 
 
 class CustomUser(AbstractUser):
+    STATUS_CHOICES = [("REGISTERED", "Registered"), ("VOLUNTEER", "Volunteer")]
 
     phone_number = models.IntegerField(null=True)
+    status = models.CharField(
+        max_length=10, choices=STATUS_CHOICES, default="REGISTERED"
+    )
 
 
 class AnimalAdvert(models.Model):
@@ -36,7 +40,7 @@ class AnimalAdvert(models.Model):
         max_length=10, choices=STATUS_CHOICES, default="IN_PROCESS"
     )
     city = models.CharField(max_length=50, choices=CITY_CHOICES)
-    coordinates = models.CharField(max_length=50)
+    coordinates = models.JSONField(max_length=100, null=False)
     description = models.TextField(null=True)
     inspector = models.ForeignKey(CustomUser, on_delete=models.RESTRICT, null=True)
     photo = models.ImageField(upload_to="images/", null=True)
