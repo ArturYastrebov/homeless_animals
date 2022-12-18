@@ -9,7 +9,7 @@
 
     <div class="grid text-left" style="margin-left: 15%; margin-right: 25%">
         <h1>
-            Show homeless animals on Google maps
+            About Us
         </h1>
         <hr>
         <div id="map" style="height: 600px; width: 800px;"></div>
@@ -23,6 +23,7 @@
                 const map = new google.maps.Map(document.getElementById("map"), {
                     zoom: 13,
                     center: uluru,
+
                 });
 
                 // ajax call
@@ -39,12 +40,16 @@
                             var x = data;
                             let list_res = []
                             for (let i = 0; i < x['animals'].length; i++) {
-                              list_res.push([x['animals'][i]['coordinates'],x['animals'][i]['species']]);}
+                              list_res.push([
+                                  x['animals'][i]['coordinates'],
+                                  x['animals'][i]['species'],
+                                  x['animals'][i]['id']
+                              ]);}
                             console.log(data);
                             db_markers = list_res
                             var index;
                             for (index = db_markers.length - 1; index >= 0; --index) {
-                                addMarker(db_markers[index][0], db_markers[index][1])}
+                                addMarker(db_markers[index][0], db_markers[index][1], db_markers[index][2])}
                         },
                         // Error handling
                         error: function (error) {
@@ -52,14 +57,30 @@
                     });}
                 ajaxCall();
 
-                function addMarker(coordinates, title) {
+                function addMarker(coordinates, title, id) {
                     var marker = new google.maps.Marker({
                         position: coordinates,
                         title: title,
+                        id: id,
                         map: map,
+                        url: '<a href="http://127.0.0.1:8000/' + id + '">Show animal</a>'
+                    });
+                       const infoWindow = new google.maps.InfoWindow({
+                    content: "",
+                    disableAutoPan: true,
+                  });
+                  const labels = marker.url;
+
+                marker.addListener("click", () => {
+                      infoWindow.setContent(labels);
+                      infoWindow.open(map, marker);
                     });
                 }
+
+
+
             }
+
 
             window.initMap = initMap;
         </script>
