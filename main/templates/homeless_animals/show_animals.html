@@ -9,10 +9,10 @@
 {% endblock %}
 
 {% block content %}
-    <form action="uploaf" method="POST" class="content_show_form">
+    <form action="upload/" method="POST" class="content-show-form">
         <lable>Choose what animals do you want to see</lable>
         {% csrf_token %}
-        {% form.as_p %}
+        {{ form.as_p }}
         <button type="submit" class="save btn btn-secondary">Search for animals</button>
     </form>
 {% endblock %}
