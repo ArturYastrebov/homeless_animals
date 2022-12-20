@@ -1,0 +1,26 @@
+{% extends "homeless_animals/base.html" %}
+
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="../../static/css/show_full_advert.css">
+{% endblock %}
+
+{% block content %}
+    <div class="photo">
+        <img src= "../../static/{{ advert.photo }}" alt="Image does not found" width=50% class="animal-photo center">
+    </div>
+    <div class="container">
+    <ul class="chits-list">
+        <li class="list-group-item">last update: {{ advert.last_updated }}</li>
+        <li class="list-group-item">status: {{ advert.status }}</li>
+        <li class="list-group-item">city: {{ advert.city }}</li>
+        <li class="list-group-item">species: {{ advert.species }}</li>
+        <li class="list-group-item">size: {{ advert.size }}</li>
+        <li class="list-group-item">sex: {{ advert.sex }}</li>
+        <li class="list-group-item">age: {{ advert.age }}</li>
+        <li class="list-group-item">lost: {{ advert.lost }}</li>
+        <li class="list-group-item">description: {{ advert.description }}</li>
+    </ul>
+    <a href="http://127.0.0.1:8000/{{ advert.id }}/delete_advert" class="btn btn-secondary">Delete</a>
+    <a href="http://127.0.0.1:8000/{{ advert.id }}/approve_advert" class="btn btn-secondary">Approve</a>
+    </div>
+    {% endblock %}

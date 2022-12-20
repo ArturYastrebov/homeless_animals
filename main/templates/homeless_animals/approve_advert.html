@@ -1,0 +1,19 @@
+{% extends "homeless_animals/base.html" %}
+
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="../../static/css/show_animals.css">
+{% endblock %}
+
+{% block title %}
+    <title>Approve advert</title>
+{% endblock %}
+
+{% block content %}
+    {{ object }}
+    <form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update">
+    </form>
+{% endblock %}
+
+
