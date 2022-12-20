@@ -1,7 +1,6 @@
 from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from datetime import datetime
 
 
 class CustomUser(AbstractUser):
@@ -15,7 +14,9 @@ class CustomUser(AbstractUser):
 
 class AnimalAdvert(models.Model):
     STATUS_CHOICES = [("IN_PROCESS", "In process"), ("DONE", "Done")]
-    CITY_CHOICES = [("KV", "Kyiv"), ]
+    CITY_CHOICES = [
+        ("KV", "Kyiv"),
+    ]
     SPECIES_CHOICES = [
         ("DOG", "Dog"),
         ("CAT", "Cat"),
