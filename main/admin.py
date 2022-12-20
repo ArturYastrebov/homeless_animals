@@ -3,7 +3,7 @@ from .models import CustomUser, AnimalAdvert
 
 
 class CustomUserAdmin(admin.ModelAdmin):
-    list_display = ("username", "email", "first_name", "last_name", "phone_number", "password", "is_staff")
+    list_display = ("username", "email", "first_name", "last_name", "phone_number", "status")
 
 
 class AnimalAdvertAdmin(admin.ModelAdmin):

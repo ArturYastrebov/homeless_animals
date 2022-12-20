@@ -20,7 +20,12 @@
         <li class="list-group-item">lost: {{ advert.lost }}</li>
         <li class="list-group-item">description: {{ advert.description }}</li>
     </ul>
-    <a href="http://127.0.0.1:8000/{{ advert.id }}/delete_advert" class="btn btn-secondary">Delete</a>
-    <a href="http://127.0.0.1:8000/{{ advert.id }}/approve_advert" class="btn btn-secondary">Approve</a>
+    {% if user.status == "VOLUNTEER" or user.is_superuser %}
+           <a href="http://127.0.0.1:8000/{{ advert.id }}/delete_advert" class="btn btn-secondary">Delete</a>
+           <a href="http://127.0.0.1:8000/{{ advert.id }}/approve_advert" class="btn btn-secondary">Approve</a>
+    {% else %}
+            You can register and get volunteer status to work in the "Homeless animals" team
+    {% endif %}
+
     </div>
     {% endblock %}
