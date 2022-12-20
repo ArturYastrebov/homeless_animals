@@ -7,34 +7,8 @@ from main.models import *
 
 
 class FindAnimalAdvertForm(forms.Form):
-    SPECIES_CHOICES = [
-        ("DOG", "Dog"),
-        ("CAT", "Cat"),
-    ]
-    SIZE_CHOICES = [
-        ("L", "Big"),
-        ("M", "Middle"),
-        ("S", "Small"),
-        ("---", "---"),
-    ]
-    SEX_CHOICES = [("Male", "Male"), ("Female", "Female"), ("---", "---")]
-    AGE_CHOICES = [
-        ("JN", "Junior"),
-        ("MD", "Middle"),
-        ("SN", "Senior"),
-        ("---", "---"),
-    ]
-    LOST_CHOICES = [("YES", "Yes"), ("No", "No"), ("---", "---")]
-    CITY_CHOICES = [
-        ("KV", "Kyiv"),
-    ]
-
-    species = forms.ChoiceField(choices=SPECIES_CHOICES)
-    size = forms.ChoiceField(choices=SIZE_CHOICES)
-    sex = forms.ChoiceField(choices=SEX_CHOICES)
-    age = forms.ChoiceField(choices=AGE_CHOICES)
-    lost = forms.ChoiceField(choices=LOST_CHOICES)
-    city = forms.ChoiceField(choices=CITY_CHOICES)
+    STATUS_CHOICES = [("IN_PROCESS", "In process"), ("DONE", "Done")]
+    status = forms.ChoiceField(choices=STATUS_CHOICES)
 
 
 class AddAnimalAdvertForm(forms.ModelForm):
@@ -54,10 +28,11 @@ class AddAnimalAdvertForm(forms.ModelForm):
 
 
 User = get_user_model()
+
+
 class UserCreationForm(UserCreationForm):
     email = EmailField(label="Email")
     phone_number = IntegerField(label="Phone number")
-
 
 
     class Meta(UserCreationForm.Meta):
@@ -87,4 +62,3 @@ class UserCreationForm(UserCreationForm):
         if commit:
             user.save()
         return user
-
