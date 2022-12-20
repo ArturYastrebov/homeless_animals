@@ -40,11 +40,15 @@
                             var x = data;
                             let list_res = []
                             for (let i = 0; i < x['animals'].length; i++) {
-                              list_res.push([
-                                  x['animals'][i]['coordinates'],
-                                  x['animals'][i]['species'],
-                                  x['animals'][i]['id']
-                              ]);}
+                                if (x['animals'][i]['status'] === 'DONE')
+                                    {
+                                    list_res.push([
+                                      x['animals'][i]['coordinates'],
+                                      x['animals'][i]['species'],
+                                      x['animals'][i]['id']
+                                                  ]);
+                                    }
+                              }
                             console.log(data);
                             db_markers = list_res
                             var index;

@@ -16,3 +16,8 @@
     border-radius: 10px;
 }
 
+.content .center{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}

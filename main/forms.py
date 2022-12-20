@@ -36,7 +36,7 @@ class FindAnimalAdvertForm(forms.Form):
     lost = forms.ChoiceField(choices=LOST_CHOICES)
     city = forms.ChoiceField(choices=CITY_CHOICES)
 
-#
+
 class AddAnimalAdvertForm(forms.ModelForm):
     class Meta:
         model = AnimalAdvert
