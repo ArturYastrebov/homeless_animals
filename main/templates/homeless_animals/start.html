@@ -7,17 +7,25 @@
 
 {% block content %}
 
-    <div class="grid text-left" style="margin-left: 15%; margin-right: 25%">
-        <h1>
-            About Us
-        </h1>
-        <hr>
-        <div id="map" style="height: 600px; width: 800px;"></div>
+    <div class="grid text-left">
+        <div class="layer1 left_part">
+            <h1>
+                Мap of homeless animals
+            </h1>
+            <hr>
+            <div id="map" style="height: 700px; width: 1200px;"></div>
+        </div>
+         <div class="layer2 right_part">&#160;&#160;&#160;&#160;Before you buy a dog or cat, just look at the map. It hosts many
+             faithful friends. You will find the one to love and take care of. They are different: big, small, ready
+             to protect you anytime, friendly, lazybones, and restless. Whenever you adopt a pet, you save the three:
+             a pet you give home, another homeless pet that will find a vacant place in the shelter, and a Human in
+             your heart. Adopt, don’t shop, cause the true friendship is priceless!
+         </div>
         <script>
             // Initialize and add the map
             function initMap() {
                 // The location of Uluru
-                const uluru = {lat: 50.457084670428856, lng: 30.519846638514196};
+                const uluru = {lat: 50.45053219765232, lng: 30.46395687458102};
 
                 // The map, centered at Uluru
                 const map = new google.maps.Map(document.getElementById("map"), {

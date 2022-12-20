@@ -7,8 +7,20 @@ body {
     font-size: 16px;
     font-weight: 400;
     color: #000;
-    background-color: #fff;
+    opacity: 1.6;
     min-width: 320px;
+
+}
+body::after {
+  content: "";
+  background: #46aa43 url(https://images.pexels.com/photos/13334106/pexels-photo-13334106.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1);
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
 }
 
 img {
@@ -54,5 +66,25 @@ a:hover {
 }
 
 .content {
+
     margin-top: 100px;
 }
+
+   .layer1, .layer2 {
+    background: #F2EFE6;
+    border: 1px solid #B25538;
+    padding: 10px;
+    margin: 20px;
+    display: inline-block;
+    vertical-align: top;
+   }
+
+   .left_part {
+    width: 70%;
+    text-align: center
+   }
+    .right_part {
+    width: 20%;
+    font-size: 20px;
+    text-align: justify;
+   }
