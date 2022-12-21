@@ -23,13 +23,8 @@ def about_us_page(response):
 
 
 def show_animals_page(request):
-    form = FindAnimalAdvertForm()
-    return render(request, "homeless_animals/show_animals.html", {"form": form})
-
-
-def show_animals_upload(request):
     animal_advert_list = AnimalAdvert.objects.all()
-    paginator = Paginator(animal_advert_list, 6)
+    paginator = Paginator(animal_advert_list, 8)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
     return render(

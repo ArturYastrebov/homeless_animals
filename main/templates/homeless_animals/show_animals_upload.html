@@ -24,22 +24,25 @@
     </div>
 
     <div class="row">
+    <div class="card-group">
         {% for contact in page_obj %}
             <div class="col-3">
                 <div class="card">
                     <div class="card-body">
                         <img src= "../../static/{{ contact.photo }}" alt="Image does not found" width=100%>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">index: {{ contact.id }}</li>
+                            <li class="list-group-item">status: {{ contact.status }}</li>
                             <li class="list-group-item">last update: {{ contact.last_updated }}</li>
                             <li class="list-group-item">city: {{ contact.city }}</li>
                             <li class="list-group-item">species: {{ contact.species }}</li>
+                            <li class="list-group-item">size: {{ contact.size }}</li>
                         </ul>
                     </div>
                     <a href="http://127.0.0.1:8000/{{ contact.id }}" class="btn btn-secondary">More</a>
                 </div>
             </div>
         {% endfor %}
+    </div>
     </div>
     {{ contact.full_name|upper }}<br>
 {% endblock %}

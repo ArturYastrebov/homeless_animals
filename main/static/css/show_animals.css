@@ -7,17 +7,12 @@
     padding-bottom: 99999px;
 }
 
-.content .content-show-form {
-    width: 550px;
-    height: auto;
-    margin: auto;
-    background-color: antiquewhite;
-    padding: 50px;
-    border-radius: 10px;
-}
-
 .content .center{
     display: block;
     margin-right: auto;
     margin-left: auto;
+}
+
+.content .row {
+
 }
